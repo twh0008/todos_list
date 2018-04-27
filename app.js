@@ -10,12 +10,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-app.get("/", function(req, res) {
+const todoRoutes = require(`./routes/todos`)
+
+app.get("/", (req, res) => {
     res.send(`hello from root!`);
 
 });
 
+app.use(`/api/todos`, todoRoutes);
 
-app.listen(port,function() {
+app.listen(port,() => {
     console.log(`Listening from ${port}`);
 })

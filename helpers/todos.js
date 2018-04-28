@@ -31,9 +31,9 @@ exports.findTodo = (req, res) => {
     });
 };
 exports.updateTodo = (req, res) => {
-  db.Todo.findByIdAndUpdate({ _id: req.params.todoID }, req.body, { new: true })
+  db.Todo.findByIdAndUpdate({ _id: req.params.todoID }, req.body, {new: true })
     .then(todo => {
-      res.json(todo);
+      res.json({message: "Updated!"});
     })
     .catch(err => {
       console.log(err);

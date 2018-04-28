@@ -40,11 +40,14 @@ exports.updateTodo = (req, res) => {
       res.send(err);
     });
 };
-exports.deleteTodo = (req, res) => {
-  db.Todo.findByIdAndRemove({ _id: req.params.todoID }).catch(err => {
-    console.log(err);
-    res.send(err);
-  });
+exports.deleteTodo = function(req, res) {
+  db.Todo.remove({ _id: req.params.todoID })
+    .then(function() {
+      res.json({ message: "We deleted it!" });
+    })
+    .catch(function(err) {
+      res.send(err);
+    });
 };
 
 module.exports = exports;

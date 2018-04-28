@@ -1,6 +1,8 @@
+require('dotenv').config();
+
 const mongoose = require("mongoose");
 mongoose.set('debug', true);
-mongoose.connect("mongodb://localhost/todo-api");
+mongoose.connect(process.env.DB_URL);
 
 mongoose.Promise = Promise;
 
